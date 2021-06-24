@@ -7,7 +7,7 @@ services:
         container_name: docker_db
         restart: always
         environment:
-            MYSQL_ROOT_PASSWORD: example
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
         volumes:
             - db-data:/var/lib/mariadb
         ports: 
