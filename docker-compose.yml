@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+    #Service db
+    mariadb:
+        image: mariadb
+        container_name: docker_db
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: example
+        volumes:
+            - db-data:/var/lib/mariadb
+        ports: 
+            - 3306:3306
+        networks:
+            - dev
+
+    #Service PhpMyAdmin
+    phpmyadmin:
+        image: phpmyadmin
+        container_name: docker_pma
+        restart: always
+        depends_on:
+            - mariadb
+        ports:
+            - 8080:80
+        environment: 
+            PMA_HOST: mariadb
+        networks:
+            - dev
+
+    #Service php & apache
+    www:
+        build: php
+        container_name: docker_www
+        ports:
+            - 8082:80
+        volumes:
+            - ./php/vhosts:/etc/apache2/sites-enabled
+            - ./:/var/www
+        restart: always
+        networks:
+            - dev
+
+networks:
+    dev:
+
+volumes:
+    db-data:
