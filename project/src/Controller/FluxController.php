@@ -9,12 +9,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class FluxController extends AbstractController
 {
     /**
-     * @Route("/flux", name="flux")
+     * @Route("/", name="flux")
      */
     public function index(): Response
     {
-        return $this->render('flux/index.html.twig', [
-            'controller_name' => 'FluxController',
-        ]);
+        $rss = simplexml_load_file('http://www.lemonde.fr/rss/une.xml');
+        return $this->render('flux/index.html.twig', array(
+            'rssItems' => $rss->channel->item,
+            'controller_name' => 'FluxController'
+        ));
     }
 }
