@@ -1,0 +1,29 @@
+main{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height:100%;
+}
+
+.principale{
+    display: flex;
+    flex-direction: column;
+    flex: 0.6;
+    background-color: gainsboro;
+    height:500px;
+    overflow-y: auto;
+    justify-content: space-between;
+}
+
+.table{
+    display: flex;
+    flex-direction: column;
+    flex: 0.4;
+    height:50%;
+}
+
+.titre{
+    display: flex;
+    align-self: center;
+}

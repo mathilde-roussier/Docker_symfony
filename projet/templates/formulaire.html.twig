@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Ajout de source  
+    
+{% endblock %}
+
+{# this tag only applies to the forms defined in this template #}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <main>
+        <section id="form" class="principale">
+            <h1>
+                Ajout de source 
+            </h1>
+
+            {{ form(form) }}
+            </section>
+
+        </main>
+
+    {% endblock %}
+    

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Flux RSS  
+    
+{% endblock %}
+
+{% block body %}
+    <main>
+        <section class="principale">
+            <h1 class="titre">
+                {{ nom_flux }}
+            </h1>
+            {% for item in rssItems %}
+                <ul>
+                    <h4>
+                        TITRE :                               
+                                                
+                        {{ item.title }}
+                    </h4>
+                    <a href="{{ item.link }}" target="_blank">
+                        {{ item.link }}
+                    </a>
+                    <p>
+                        {{ item.description }}
+                    </p>
+                </ul>
+                <hr>
+                {% endfor %}
+            </section>
+            <section class="table">
+                <div>
+                    {% if sources %}
+                        {% for source in sources %}
+                            <ul>
+                                <h4>
+                                    {{ source.nomSource }}
+                                </h4>
+                                <p>
+                                    {{ source.commentaires }}
+                                </p>
+                                <a href="{{ path('source', {'id': source.id}) }}">
+                                    Voir le flux 
+                                </a>
+                            </ul>
+                            <hr>
+                            {% endfor %}
+
+                        {% else %}
+                            Aucune source n'est renseignée.                     
+                                                                        
+                                                
+                        {% endif %}
+                    </div>
+                </section>
+            </main>
+
+        {% endblock %}
+        
