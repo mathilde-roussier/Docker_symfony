@@ -9,7 +9,7 @@ services:
         environment:
             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
         volumes:
-            - db-data:/var/lib/mariadb
+            - ./data:/var/lib/mysql
         ports: 
             - 3306:3306
         networks:
@@ -35,15 +35,9 @@ services:
         container_name: docker_www
         ports:
             - 8082:80
-        volumes:
-            - ./php/vhosts:/etc/apache2/sites-enabled
-            - ./:/var/www
         restart: always
         networks:
             - dev
 
 networks:
     dev:
-
-volumes:
-    db-data:
